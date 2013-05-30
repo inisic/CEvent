@@ -1,4 +1,4 @@
-var Util = (function ( $ ) {
+var Utils = (function ( $ ) {
 
 	var Log = function ( domain, enabled ) {
 		
@@ -19,18 +19,18 @@ var Util = (function ( $ ) {
 		return this;
 	};	
 	
-	var Event = function (namespace, target) {
+	var CEvent = function (namespace, target) {
 			
 			this.namespace = namespace ? "." + namespace : "";
 			this.target = target || $( {} );
 			this.log = new Log();
 	};
 	
-	Event.prototype.setTarget = function (target) {
+	CEvent.prototype.setTarget = function (target) {
 		this.target = target;
 	};
 
-	Event.prototype.subscribe = function (topic, callback) {
+	CEvent.prototype.subscribe = function (topic, callback) {
 		
 		var that = this,
 			topic = topic + this.namespace;
@@ -44,14 +44,14 @@ var Util = (function ( $ ) {
 		that.log.print("subscribe -> " + topic);
 	};
 	
-	Event.prototype.unsubscribe = function (topic) {	
+	CEvent.prototype.unsubscribe = function (topic) {	
 
 		var topic = topic + this.namespace;
 		this.target.off(topic);
 		this.log.print("unsubscribe -> " + topic);
 	};
 	
-	Event.prototype.publish = function (topic, params) {
+	CEvent.prototype.publish = function (topic, params) {
 
 		var that = this,
 			params = params || null,
@@ -63,13 +63,13 @@ var Util = (function ( $ ) {
 		that.log.print(params);
 	};
 	
-	return { Log : Log, Event : Event };
+	return { Log : Log, CEvent : CEvent };
 
 })( jQuery );	
 
 // use
 
-var Event = new Util.Event("somenamespace");
+var Event = new Utils.CEvent("somenamespace");
 
 Event.subscribe("sometopic", function (e, params) { 
 	console.log("callback");
