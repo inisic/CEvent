@@ -16,13 +16,9 @@ Event.subscribe("sometopic", function (e, params) {
 	console.log(this);
 });
 
-
 Event.publish("sometopic", [{a:1}, "!#", {"ASDASD":123}]);
 
-// unsubsribe topic
 Event.unsubscribe("sometopic");	
 
-// or complete namespace
-Event.unsubscribe("somenamespace");  
 
 ```
