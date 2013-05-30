@@ -7,7 +7,9 @@ CEvent
 Usage: 
 
 ``````javascript
-var Event = new Utils.CEvent("somenamespace");
+var Event = new Utils.CEvent("somenamespace"); 
+
+//or: var Event = new Utils.CEvent("somenamespace", $(<target-selector>));
 
 Event.subscribe("sometopic", function (e, params) { 
 	console.log("callback");
