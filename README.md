@@ -18,7 +18,7 @@ Event.subscribe("sometopic", function (e, params) {
 	console.log(this);
 });
 
-Event.publish("sometopic", [{a:1}, "!#", {"ASDASD":123}]);
+Event.publish("sometopic", [{"a":"1"}, "b"]);
 
 Event.unsubscribe("sometopic");	
 
